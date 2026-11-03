@@ -39,4 +39,3 @@ A small robot car that drives itself to a destination selected on a web page. Th
 - [ ] **V2:** A* planner, web interface, sensors, self-driving logic
 - [ ] **V3:** 3D-printed chassis, cleaned-up wiring
 
-> **Status:** Proposal stage. Nothing is implemented yet.
