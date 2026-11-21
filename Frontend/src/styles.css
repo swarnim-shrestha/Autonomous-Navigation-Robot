@@ -1,0 +1,60 @@
+:root {
+  --ink: #111827; --mute: #6b7280; --line: #d1d5db; --blue: #1d4ed8; --ok: #15803d; --bar: #e5e7eb;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink); background: #fff; color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.5; background: #fff; }
+h1, h2 { margin: 0; font-weight: 600; }
+h1 { font-size: 18px; }
+h2 { font-size: 16px; margin-bottom: 12px; }
+
+.header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 16px clamp(16px, 4vw, 32px); border-bottom: 1px solid var(--line); }
+.conn { display: flex; align-items: center; gap: 6px; color: var(--mute); font-size: 14px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+.dot.off { background: #dc2626; }
+
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; padding: 24px clamp(16px, 4vw, 32px); max-width: 1200px; margin: 0 auto; align-items: start; }
+@media (max-width: 860px) { .main { grid-template-columns: 1fr; } }
+.side { display: flex; flex-direction: column; gap: 24px; }
+.panel { border: 1px solid var(--line); border-radius: 4px; padding: 16px; background: #fff; }
+
+button { font: 500 14px inherit; font-family: inherit; border: 1px solid var(--line); background: #fff; color: var(--ink); padding: 7px 14px; border-radius: 4px; cursor: pointer; }
+button:hover:not(:disabled) { background: #f3f4f6; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+button.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+button.primary:hover:not(:disabled) { background: #1e40af; }
+
+/* map */
+.map { position: relative; overflow: hidden; border-radius: 4px; background: #f9fafb; aspect-ratio: 1000 / 640; }
+.map-inner { transform-origin: 50% 50%; transition: transform 0.2s; width: 100%; height: 100%; }
+.map svg { width: 100%; height: 100%; display: block; }
+.room { cursor: pointer; }
+.room.locked { cursor: not-allowed; }
+.room:hover rect { filter: brightness(0.96); }
+svg text { font-size: 13px; font-weight: 500; fill: var(--mute); pointer-events: none; }
+.route { fill: none; stroke: var(--blue); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.route.done { stroke: #9ca3af; }
+
+.search { position: absolute; top: 12px; left: 12px; width: min(300px, 70%); z-index: 2; }
+.search input, .chip { width: 100%; padding: 10px 14px; border: 0; border-radius: 8px; background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); font: 500 14px inherit; font-family: inherit; }
+.chip { display: flex; justify-content: space-between; align-items: center; }
+.chip button { border: 0; padding: 0 4px; font-size: 18px; color: var(--mute); background: none; }
+.search ul { list-style: none; margin: 4px 0 0; padding: 4px; background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); max-height: 220px; overflow: auto; }
+.search li button { width: 100%; text-align: left; border: 0; padding: 8px 10px; }
+.search li.none { padding: 8px 10px; color: var(--mute); }
+.zoom { position: absolute; right: 12px; bottom: 12px; display: flex; flex-direction: column; background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); }
+.zoom button { width: 36px; height: 36px; border: 0; padding: 0; font-size: 18px; }
+
+/* status */
+.state { font-size: 22px; font-weight: 600; line-height: 1.2; }
+.state.ok { color: var(--ok); }
+.sub { color: var(--mute); font-size: 14px; }
+.bar { height: 6px; background: var(--bar); border-radius: 3px; overflow: hidden; margin-top: 12px; }
+.bar b { display: block; height: 100%; background: var(--blue); transition: width 0.3s; }
+dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 14px 0 0; font-size: 14px; }
+dt { color: var(--mute); } dd { margin: 0; text-align: right; }
+.actions { display: flex; gap: 8px; margin-top: 16px; }
+.log { margin: 0; padding: 0; list-style: none; font-size: 13px; line-height: 1.7; max-height: 200px; overflow: auto; color: var(--mute); }
+.log b { color: var(--ink); font-weight: 500; }
