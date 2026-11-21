@@ -3,12 +3,12 @@
 
 
 API the backend must provide
-| Method | Path | Body | Returns |
+ Method , Path , Body , Returns 
 
-| GET | `/api/status` | – | status |
-| POST | `/api/destination` | { roomId } (or `null` to clear) | status |
-| POST | `/api/start` | – | status |
-| POST | `/api/stop` | – | status |
+ GET -> `/api/status` | – | status |
+ POST -> `/api/destination` | { roomId } (or `null` to clear) | status |
+ POST -> `/api/start` | – | status |
+ POST  `/api/stop` | – | status |
 
 status =
 ```json
@@ -23,7 +23,7 @@ status =
 Map coordinates are 0–1000 (x) and 0–640 (y). Rooms are in `src/data/rooms.js`.
 `nextIndex` = index of the next route point the robot is heading to.
 
-## Files
+Files
 - `src/api.js` – demo robot + real fetch calls (the only file that talks to the backend)
 - `src/route.js` – A* used by the demo robot
 - `src/data/rooms.js` – floor plan
